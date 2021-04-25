@@ -1,0 +1,17 @@
+{
+  "name": "bug-svg-ternary",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nullstack": "~0.10.0"
+  },
+  "scripts": {
+    "start": "npx webpack --config node_modules/nullstack/webpack.config.js --mode=development --watch",
+    "build": "npx webpack --config node_modules/nullstack/webpack.config.js --mode=production"
+  },
+  "dependencies": {
+    "poisonicon": "^0.1.2"
+  }
+}
