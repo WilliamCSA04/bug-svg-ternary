@@ -1,8 +1,13 @@
 import Nullstack from 'nullstack';
 import './Home.scss';
 import Logo from 'nullstack/logo';
+import StrokeStar from 'poisonicon/star/stroke'
+import FillStar from 'poisonicon/star/fill'
 
 class Home extends Nullstack {
+
+  showNulla = false;
+  starred = false;
 
   prepare({ project, page }) {
     page.title = `${project.name} - Nulla-chan te dá as boas vindas!`;
@@ -40,30 +45,13 @@ class Home extends Nullstack {
           </span>
           <ul>
             <li>
-              <Link href="https://nullstack.app/pt-br/componentes-renderizaveis">
-                🎉 Crie seu primeiro componente 
-              </Link>
+              <button onclick={{starred: !this.starred}}>Clique para dar uma estrela: {this.starred ? <FillStar /> : <StrokeStar />}</button>
             </li>
-            <li>
-              <Link href="https://nullstack.app/pt-br/rotas-e-parametros">
-                ✨ Configure sua primeira rota
-              </Link>
-            </li>
-            <li>
-              <Link href="https://nullstack.app/pt-br/contexto">
-                ⚡ Defina seu context
-              </Link>
-            </li>
-            <li>
-              <Link href="https://github.com/nullstack/nullstack/stargazers">
-                ⭐ Dê uma estrela no github
-              </Link>
-            </li>
-            <li>
-              <Link href="https://youtube.com/nullstack">
-                🎬 Se inscreva no nosso Canal do Youtube
-              </Link>
-            </li>
+            {
+              this.starred && <li>
+                Obrigado por nos dar uma estrela, mas há um bug e ela não fica preenchida :(
+              </li>
+            }
           </ul>
           <div>
             <span>
@@ -74,11 +62,17 @@ class Home extends Nullstack {
             </blockquote>
           </div>
         </article>
-        <aside>
-          <Link href="https://nullstack.app/pt-br/waifu">
-            <img src="/nulla-chan.webp" alt="Nulla-Chan: waifu oficial do Nullstack" />
-          </Link>
-        </aside>
+        <button onclick={{showNulla: !this.showNulla}}>{ !this.showNulla ? "Mostrar" : "Esconder" } Nulla</button>
+        {
+          this.showNulla && (
+            <aside>
+              <Link href="https://nullstack.app/pt-br/waifu">
+                <img src="/nulla-chan.webp" alt="Nulla-Chan: waifu oficial do Nullstack" />
+              </Link>
+            </aside>
+          )
+        }
+        
       </section>
     )
   }
