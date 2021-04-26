@@ -64,10 +64,16 @@ class Home extends Nullstack {
         </article>
         <button onclick={{showNulla: !this.showNulla}}>{ !this.showNulla ? "Mostrar" : "Esconder" } Nulla</button>
         {
-          this.showNulla && (
+          this.showNulla ? (
             <aside>
               <Link href="https://nullstack.app/pt-br/waifu">
                 <img src="/nulla-chan.webp" alt="Nulla-Chan: waifu oficial do Nullstack" />
+              </Link>
+            </aside>
+          ) : (
+            <aside>
+              <Link href="https://nullstack.app/pt-br/waifu">
+                Escondida
               </Link>
             </aside>
           )
